@@ -2,18 +2,18 @@
   =============================== DISPLAY ================================-->
 <div class="display" [ngClass]="{'display-active': input.length > 0}">
   <div class="display__digits">
-    <span>{{input | formatDigit: 6}}</span>
-    <span>{{input | formatDigit: 5}}</span>
+    <span>{{input | computeDigit: 6}}</span>
+    <span>{{input | computeDigit: 5}}</span>
     <span>h</span>
   </div>
   <div class="display__digits">
-    <span>{{input | formatDigit: 4}}</span>
-    <span>{{input | formatDigit: 3}}</span>
+    <span>{{input | computeDigit: 4}}</span>
+    <span>{{input | computeDigit: 3}}</span>
     <span>m</span>
   </div>
   <div class="display__digits">
-      <span>{{input | formatDigit: 2}}</span>
-      <span>{{input | formatDigit: 1}}</span>
+      <span>{{input | computeDigit: 2}}</span>
+      <span>{{input | computeDigit: 1}}</span>
       <span>s</span>
   </div>
   <button (click)="onDelete()" class="u-btn display__clear-btn">

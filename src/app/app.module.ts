@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { InputComponent } from './countdown/input/input.component';
 import { OutputComponent } from './countdown/output/output.component';
 import { FormatDigitPipe } from './pipes/format-digit.pipe';
+import { ComputeDigitPipe } from './pipes/compute-digit.pipe';
 import { CountdownComponent } from './countdown/countdown.component';
 
 @NgModule({
@@ -15,6 +16,7 @@ import { CountdownComponent } from './countdown/countdown.component';
     InputComponent,
     OutputComponent,
     FormatDigitPipe,
+    ComputeDigitPipe,
     CountdownComponent
   ],
   imports: [

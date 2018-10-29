@@ -1,11 +1,21 @@
-<section>
-  <mat-progress-spinner [value]="progress" [color]="primary"></mat-progress-spinner>
-  <div>
-    <span>{{timeLeft.hours | formatDigit}}</span>
-    <span>{{timeLeft.minutes | formatDigit}}</span>
-    <span>{{timeLeft.seconds | formatDigit}}</span>
+<section class="countdown-output" fxLayout="column" fxLayoutAlign="center center">
+  <mat-progress-spinner 
+    [value]="progress" 
+    [color]="primary"
+    [diameter]="250"
+    [strokeWidth]="4"></mat-progress-spinner>
+  <div class="display">
+    <div class="display__digits">
+        <span>{{timeLeft.hours | formatDigit}}</span>
+        <span>:</span>
+        <span>{{timeLeft.minutes | formatDigit}}</span>
+        <span>:</span>
+        <span>{{timeLeft.seconds | formatDigit}}</span>
+    </div>
   </div>
-  <button mat-fab color="primary" (click)="pauseCount()">
-    <i class="material-icons">pause</i>
-  </button>
+  <div class="btn-box">
+      <button mat-fab color="primary" (click)="pauseCount()">
+        <i class="material-icons">pause</i>
+      </button>
+  </div>
 </section>

@@ -1,32 +1,21 @@
-.display {
-    
+.countdown-input {
+
     padding: 2rem;
-    text-align: center;
+    height: 100vh;
 
-    span {
-        color: #ccc;
-    }
-   
-    &__digits {
-        display: inline-block;
-        font-size: 4rem;
-        margin-right: 2rem;
-    }
-
-    &-active span{
-        color: #4550b3;
+    &__keypad {
+        height: 10rem;
+        width: 100%;
+        padding-top: 2rem;
+        
+        &__btn {
+            font-size: 3.5rem;
+        }
     }
 }
 
-.keypad-btn {
-    font-size: 4rem;
+.divider {
+    width: 100%;
 }
 
-.btn-box {
-    text-align: center;
-}
 
-.msg-box {
-    text-align: center;
-    font-weight: 700;
-}

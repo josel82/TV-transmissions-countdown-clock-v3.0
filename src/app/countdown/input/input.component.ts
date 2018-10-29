@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 import { InputService } from '../../services/input.service';
 
@@ -8,7 +8,7 @@ import { InputService } from '../../services/input.service';
   styleUrls: ['./input.component.scss'],
   providers:[InputService]
 })
-export class InputComponent implements OnInit {
+export class InputComponent {
 
   @Output() onCount = new EventEmitter<Object>();
 
@@ -18,22 +18,34 @@ export class InputComponent implements OnInit {
 
   constructor(private inputService: InputService) { }
 
-  ngOnInit() {
-  }
-
+  /**
+   * Key event handler. it pushes new digit to the array.
+   * @param num value of the key
+   */
   onKeyPressed(num){
     this.input.push(num);
   }
 
+  /**
+   * Delete event handler. It deletes the last digit in the array.
+   */
   onDelete(){
     this.input.pop();
   }
 
+  /**
+   * Event Handler. Starts the process of counting down. 
+   */
   onPlayBtnClicked(){
+    //First parses input into HH mm ss format
     const targetTime = this.parseTime(this.input);
+    //Then it validates input against the following 
+    //constrains: Hours < 24 Minutes < 60 Seconds < 60
     const isValid = this.inputService.validateInput(targetTime);
     this.invalid = !isValid;
-    if(isValid){
+    //if the input is valid proceeds to emit an 
+    //event that will start the count down proccess
+    if(isValid){ 
       this.onCount.emit(targetTime);
     }
     
@@ -46,10 +58,10 @@ export class InputComponent implements OnInit {
   parseTime(input:number[]){
     const revInput = [...input].reverse();
 
-    const second =  parseInt([revInput[1],revInput[0]].join('')) || 0;
-    const minute =  parseInt([revInput[3],revInput[2]].join('')) || 0;
-    const hour = parseInt([revInput[5],revInput[4]].join('')) || 0;
-    return { hour, minute, second };
+    const seconds =  parseInt([revInput[1],revInput[0]].join('')) || 0;
+    const minutes =  parseInt([revInput[3],revInput[2]].join('')) || 0;
+    const hours = parseInt([revInput[5],revInput[4]].join('')) || 0;
+    return { hours, minutes, seconds };
   }
 
 }

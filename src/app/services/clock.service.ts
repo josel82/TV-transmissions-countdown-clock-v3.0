@@ -11,11 +11,11 @@ export class ClockService {
   /**
    * It calculates the difference between target time and current time, 
    * and returns it in milliseconds.
-   * @param targetTime time the countdown is done against. This is the time the user inputs.
+   * @param param0 time the countdown is done against. This is the time the user inputs.
    */
-  private calculateTimeDifference(targetTime) {
+  private calculateTimeDifference({hours: hour, minutes: minute, seconds: second}) {
 
-    const target = moment(targetTime);
+    const target = moment({hour,minute,second});
     const now = moment();
 
     return target.diff(now);
@@ -37,11 +37,11 @@ export class ClockService {
    * Starts the countdown process
    * @param targetTime time the countdown is done against. This is the time the user inputs.
    */
-  start(targetTime: { hour: number, minute: number, second: number }) {
+  start(targetTime: { hours: number, minutes: number, seconds: number }) {
 
     this.interval = setInterval(() => {
 
-      const timeDiff = this.calculateTimeDifference({ ...targetTime });
+      const timeDiff = this.calculateTimeDifference(targetTime);
 
       this.counter.next(this.formatTime(timeDiff));
 

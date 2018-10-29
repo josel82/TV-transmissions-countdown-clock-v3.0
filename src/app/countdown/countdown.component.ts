@@ -1,25 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-countdown',
   templateUrl: './countdown.component.html',
   styleUrls: ['./countdown.component.scss']
 })
-export class CountdownComponent implements OnInit {
+export class CountdownComponent {
   
   countingDown:boolean = false;
-  targetTime: { hour:number, minute:number, second:number }
+  targetTime: { hours:number, minutes:number, seconds:number }
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-  startCount(target){
+  /**
+   * startCount event handler. Listens to the input component
+   * @param target target time
+   */
+  startCount(target:{ hours:number, minutes:number, seconds:number }){
     this.countingDown = true;
     this.targetTime = target;
   }
 
+  /**
+   * Pause event handler. Listens to the Output component.
+   */
   pauseCount(){
     this.countingDown = false;
   }

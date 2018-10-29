@@ -1,9 +1,9 @@
 <section>
   <mat-progress-spinner [value]="progress" [color]="primary"></mat-progress-spinner>
   <div>
-    <span>{{targetTime.hours}}</span>
-    <span>{{targetTime.minutes}}</span>
-    <span>{{targetTime.seconds}}</span>
+    <span>{{timeLeft.hours}}</span>
+    <span>{{timeLeft.minutes}}</span>
+    <span>{{timeLeft.seconds}}</span>
   </div>
   <button mat-fab color="primary" (click)="pauseCount()">
     <i class="material-icons">pause</i>

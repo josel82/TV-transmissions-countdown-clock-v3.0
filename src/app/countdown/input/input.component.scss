@@ -1,0 +1,32 @@
+.display {
+    
+    padding: 2rem;
+    text-align: center;
+
+    span {
+        color: #ccc;
+    }
+   
+    &__digits {
+        display: inline-block;
+        font-size: 4rem;
+        margin-right: 2rem;
+    }
+
+    &-active span{
+        color: #4550b3;
+    }
+}
+
+.keypad-btn {
+    font-size: 4rem;
+}
+
+.btn-box {
+    text-align: center;
+}
+
+.msg-box {
+    text-align: center;
+    font-weight: 700;
+}

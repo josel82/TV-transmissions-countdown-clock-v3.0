@@ -1,0 +1,2 @@
+<app-input (onCount)="startCount($event)" *ngIf="!countingDown"></app-input>
+<app-output (onPause)="pauseCount()" *ngIf="countingDown" [setTargetTime]="targetTime"></app-output>

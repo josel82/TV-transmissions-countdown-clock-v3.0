@@ -39,7 +39,9 @@ export class OutputComponent implements OnInit, OnDestroy {
     //Listen to the countdown and updates timeDiff property
     this.clockService.counter.subscribe( timeDiff => {
       this.timeLeft = timeDiff;
-      this.setSpinnerProgress(timeDiff);
+     
+      this.progress = this.setSpinnerProgress(timeDiff);
+      
     });
     //Starts the process of countingdown
     this.clockService.start(this.targetTime);
@@ -63,10 +65,11 @@ export class OutputComponent implements OnInit, OnDestroy {
 
   setSpinnerProgress(timeDiff){
     const value = moment.duration(timeDiff).asSeconds();
-      if(!this.base){
-        this.base = value/100;
-      }
-    this.progress = 100 - (value/this.base);
+    
+    if(!this.base){
+      this.base = value/100;
+    }
+    return 100 - (value/this.base);
     
   }
 

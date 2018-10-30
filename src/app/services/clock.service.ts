@@ -18,6 +18,10 @@ export class ClockService {
     const target = moment({hour,minute,second});
     const now = moment();
 
+    if(target.diff(now) < 0){ // Adds 1 day if target time is less than current time, 
+      target.add(1, 'days');  // this is important for cases when counting one day to the next 
+    }                         // e.g  23:55 to  00:05
+    
     return target.diff(now);
   }
 

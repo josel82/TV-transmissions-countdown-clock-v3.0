@@ -23,7 +23,8 @@ export class InputComponent {
    * @param num value of the key
    */
   onKeyPressed(num){
-    this.input.push(num);
+    if(this.input.length >= 6) return; //makes sure no more than 6 digits are pushed to the array
+    this.input.push(num); 
   }
 
   /**

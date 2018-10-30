@@ -31,7 +31,7 @@
     =============================== KEYPAD ================================-->
   <mat-grid-list 
     cols="3" 
-    rowHeight="100px" 
+    rowHeight="80px" 
     class="countdown-input__keypad">
     <mat-grid-tile *ngFor="let num of numbers">
       <button (click)="onKeyPressed(num)" class="u-btn countdown-input__keypad__btn">{{num}}</button>

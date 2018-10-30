@@ -25,9 +25,9 @@ export class OutputComponent implements OnInit, OnDestroy {
   @Output() onPause = new EventEmitter<void>();
 
   progress:number = 0; // used by the spinner component 
-  base:number; //reference for the spinner progress. 
   targetTime: {hours:number, minutes:number, seconds:number} = {hours:0, minutes:0, seconds:0};
   timeLeft: {hours:number, minutes:number, seconds:number} = {hours:0, minutes:0, seconds:0}; 
+  counting:boolean;
 
   //ClockService injection
   constructor(private clockService: ClockService) { }
@@ -40,7 +40,11 @@ export class OutputComponent implements OnInit, OnDestroy {
     this.clockService.counter.subscribe( timeDiff => {
       this.timeLeft = timeDiff;
      
-      this.progress = this.setSpinnerProgress(timeDiff);
+      // this.progress = this.setSpinnerProgress(timeDiff);
+      if(!this.counting){
+        this.setSpinnerProgress(timeDiff);
+        this.counting = true;
+      }
       
     });
     //Starts the process of countingdown
@@ -63,14 +67,18 @@ export class OutputComponent implements OnInit, OnDestroy {
     this.onPause.emit();
   }
 
+  /**
+   * It controls the spinner progress
+   * @param timeDiff time duration between target and current time HH mm ss format 
+   */
   setSpinnerProgress(timeDiff){
-    const value = moment.duration(timeDiff).asSeconds();
-    
-    if(!this.base){
-      this.base = value/100;
-    }
-    return 100 - (value/this.base);
-    
+    const value = moment.duration(timeDiff).asMilliseconds(); //transforms time in milliseconds
+    const increment = 10000/value; // amount by which progress should increment so the spinner reaches 100%
+                                   // by the time duration specified, with a interval rate of 100ms 
+    const interval = setInterval(()=>{
+      this.progress = this.progress + increment;
+      if(this.progress>=100) clearInterval(interval); 
+    },100);
   }
 
 }

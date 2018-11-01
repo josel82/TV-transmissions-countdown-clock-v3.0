@@ -18,4 +18,4 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
         MatProgressSpinnerModule
     ]
 })
-export default class MaterialModule {}
+export class MaterialModule {}

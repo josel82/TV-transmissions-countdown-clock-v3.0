@@ -13,10 +13,10 @@ export class InputComponent implements OnInit{
   @Output() onCount = new EventEmitter<Object>();
    
 
-  private numbers = [1,2,3,4,5,6,7,8,9];
-  private input = [];
-  private invalid = false;
-  private gridRowHeight = 80;
+  numbers = [1,2,3,4,5,6,7,8,9];
+  input = [];
+  invalid = false;
+  gridRowHeight = 80;
 
   constructor(private inputService: InputService) { 
     

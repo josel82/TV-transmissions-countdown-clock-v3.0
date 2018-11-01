@@ -27,8 +27,7 @@ export class OutputComponent implements OnInit, OnDestroy {
   progress:number = 0; // used by the spinner component 
   targetTime: {hours:number, minutes:number, seconds:number} = {hours:0, minutes:0, seconds:0};
   timeLeft: {hours:number, minutes:number, seconds:number} = {hours:0, minutes:0, seconds:0}; 
-  counting:boolean;
-
+  
   //ClockService injection
   constructor(private clockService: ClockService) { }
 

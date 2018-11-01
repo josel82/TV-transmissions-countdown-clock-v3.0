@@ -1,13 +1,17 @@
 .countdown-input {
-
     padding: 2rem;
     height: 100vh;
+    max-width: 96rem !important;
+    margin: 0 auto;    
+}
 
-    &__keypad {
-        height: 10rem;
-        width: 100%;
-        padding-top: 2rem;
-        
+.keypad-box {
+    position: relative;
+
+    width: 100%;
+    padding-top: 2rem;
+    
+    .keypad{
         &__btn {
             font-size: 3.5rem;
         }

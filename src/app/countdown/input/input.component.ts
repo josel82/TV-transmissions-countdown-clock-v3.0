@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, Output, HostListener, OnInit } from '@angular/core';
 
 import { InputService } from '../../services/input.service';
 
@@ -8,15 +8,23 @@ import { InputService } from '../../services/input.service';
   styleUrls: ['./input.component.scss'],
   providers:[InputService]
 })
-export class InputComponent {
+export class InputComponent implements OnInit{
 
   @Output() onCount = new EventEmitter<Object>();
+   
 
   private numbers = [1,2,3,4,5,6,7,8,9];
   private input = [];
   private invalid = false;
+  private gridRowHeight = 80;
 
-  constructor(private inputService: InputService) { }
+  constructor(private inputService: InputService) { 
+    
+  }
+
+  ngOnInit(){
+    this.onViewPortResize();
+  }
 
   /**
    * Key event handler. it pushes new digit to the array.
@@ -65,4 +73,15 @@ export class InputComponent {
     return { hours, minutes, seconds };
   }
 
+  /**
+   * It listens to changes in the vieport height. 
+   * It adjust the grid's rowHeight property for mobile in landscape mode
+   * @param event 
+   */
+  @HostListener('window:resize', ['$event']) 
+  onViewPortResize(event?){
+    const deviceHeight = window.innerHeight;
+    deviceHeight <= 450 ? this.gridRowHeight = 50 : this.gridRowHeight = 80;
+  }
+  
 }

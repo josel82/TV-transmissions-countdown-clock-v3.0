@@ -1,4 +1,8 @@
-<section class="countdown-input" fxLayout="column" fxLayoutAlign="center center">
+<section 
+  class="countdown-input" 
+  fxLayout="column" 
+  fxLayoutAlign="center center"
+  >
 
   <!-- ===================================================================== 
     =============================== DISPLAY ================================-->
@@ -29,24 +33,31 @@
 
   <!-- ==================================================================== 
     =============================== KEYPAD ================================-->
-  <mat-grid-list 
+<div class="keypad-box" fxLayout.gt-xs="row">
+    <mat-grid-list 
     cols="3" 
-    rowHeight="80px" 
-    class="countdown-input__keypad">
+    [rowHeight]="gridRowHeight" 
+    class="keypad"
+    fxFlex.gt-xs="50"
+    >
     <mat-grid-tile *ngFor="let num of numbers">
-      <button (click)="onKeyPressed(num)" class="u-btn countdown-input__keypad__btn">{{num}}</button>
+      <button (click)="onKeyPressed(num)" class="u-btn keypad__btn">{{num}}</button>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="3">
-      <button (click)="onKeyPressed(0)" class="u-btn countdown-input__keypad__btn">0</button>
+      <button (click)="onKeyPressed(0)" class="u-btn keypad__btn">0</button>
     </mat-grid-tile>
   </mat-grid-list>
 
-  <!-- ====================================================================== 
+
+    <!-- ====================================================================== 
     =============================== PLAY BTN ================================-->
-  <div class="btn-box" *ngIf="input.length > 0">
+    <div class="btn-play" *ngIf="input.length > 0">
       <button mat-fab color="primary" (click)="onPlayBtnClicked()">
         <i class="material-icons">play_arrow</i>
       </button>
   </div>
+</div>
+
+
 
 </section>

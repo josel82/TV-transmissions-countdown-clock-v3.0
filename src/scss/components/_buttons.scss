@@ -1,7 +1,19 @@
-.btn-box {
+.btn-play, 
+.btn-pause {
     position: fixed;
     bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
+    right: 50%;
+    transform: translateX(50%);
     text-align: center;
+}
+
+
+
+.btn-play {
+
+    @include respond(gt-sm){
+        position: absolute;
+        right: 6rem;
+        bottom: 50%;
+    }
 }

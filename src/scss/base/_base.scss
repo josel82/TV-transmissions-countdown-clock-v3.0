@@ -1,0 +1,40 @@
+
+*, 
+*::before, 
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+}
+
+//MEDIA QUERY MANAGER
+/*
+- gt-xs  > 600px    600px/16px = 37.5em
+- gt-sm  > 960px    960px/16px = 60em
+- gt-md  > 1280px   1280/16px = 80em
+- gt-lg  > 1920px   1920px/16px = 120em
+*/
+
+@mixin respond($breakpoint){
+    @if($breakpoint == gt-xs){
+        @media (min-width: 37.5em) { @content };
+    }
+    @if($breakpoint == gt-sm){
+        @media (min-width: 60em) { @content };
+    }
+    @if($breakpoint == gt-md){
+        @media (min-width: 80em) { @content };
+    }
+    @if($breakpoint == gt-lg){
+        @media (min-width: 120em) { @content };
+    }
+
+}

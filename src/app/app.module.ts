@@ -18,7 +18,7 @@ import { CountdownComponent } from './countdown/countdown.component';
     OutputComponent,
     FormatDigitPipe,
     ComputeDigitPipe,
-    CountdownComponent
+    CountdownComponent,
   ],
   imports: [
     BrowserModule,

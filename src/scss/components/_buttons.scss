@@ -11,7 +11,7 @@
 
 .btn-play {
 
-    @include respond(gt-sm){
+    @include respond(gt-xs){
         position: absolute;
         right: 6rem;
         bottom: 50%;

@@ -1,0 +1,6 @@
+<div class="popup" [@fadeInOut]="isOpen ? 'open' : 'close'">
+  <div class="popup__content" >
+    <p class="popup__message--alert">{{content}}</p> 
+    <a class="popup__close" (click)="onClose()">&times;</a>
+  </div>
+</div>

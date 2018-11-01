@@ -10,6 +10,7 @@ import { OutputComponent } from './countdown/output/output.component';
 import { FormatDigitPipe } from './pipes/format-digit.pipe';
 import { ComputeDigitPipe } from './pipes/compute-digit.pipe';
 import { CountdownComponent } from './countdown/countdown.component';
+import { PopupComponent } from './popup/popup.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { CountdownComponent } from './countdown/countdown.component';
     FormatDigitPipe,
     ComputeDigitPipe,
     CountdownComponent,
+    PopupComponent,
   ],
   imports: [
     BrowserModule,

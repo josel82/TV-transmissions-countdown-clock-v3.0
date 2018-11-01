@@ -27,6 +27,7 @@ export class OutputComponent implements OnInit, OnDestroy {
   progress:number = 0; // used by the spinner component 
   targetTime: {hours:number, minutes:number, seconds:number} = {hours:0, minutes:0, seconds:0};
   timeLeft: {hours:number, minutes:number, seconds:number} = {hours:0, minutes:0, seconds:0}; 
+  counting:boolean = false;
   
   //ClockService injection
   constructor(private clockService: ClockService) { }
@@ -39,7 +40,6 @@ export class OutputComponent implements OnInit, OnDestroy {
     this.clockService.counter.subscribe( timeDiff => {
       this.timeLeft = timeDiff;
      
-      // this.progress = this.setSpinnerProgress(timeDiff);
       if(!this.counting){
         this.setSpinnerProgress(timeDiff);
         this.counting = true;

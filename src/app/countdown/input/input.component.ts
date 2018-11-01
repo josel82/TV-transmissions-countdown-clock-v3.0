@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Output, HostListener, OnInit } from '@angular/core';
+import { 
+  Component, 
+  EventEmitter, 
+  Output, 
+  HostListener, 
+  OnInit,
+ } from '@angular/core';
 
 import { InputService } from '../../services/input.service';
 
@@ -15,9 +21,8 @@ export class InputComponent implements OnInit{
 
   numbers = [1,2,3,4,5,6,7,8,9];
   input = [];
-  invalid = false;
+  isValid = true;
   gridRowHeight = 80;
-
   constructor(private inputService: InputService) { 
     
   }
@@ -50,11 +55,11 @@ export class InputComponent implements OnInit{
     const targetTime = this.parseTime(this.input);
     //Then it validates input against the following 
     //constrains: Hours < 24 Minutes < 60 Seconds < 60
-    const isValid = this.inputService.validateInput(targetTime);
-    this.invalid = !isValid;
+    this.isValid = this.inputService.validateInput(targetTime);
+  
     //if the input is valid proceeds to emit an 
     //event that will start the count down proccess
-    if(isValid){ 
+    if(this.isValid){ 
       this.onCount.emit(targetTime);
     }
     
@@ -82,6 +87,10 @@ export class InputComponent implements OnInit{
   onViewPortResize(event?){
     const deviceHeight = window.innerHeight;
     deviceHeight <= 450 ? this.gridRowHeight = 50 : this.gridRowHeight = 80;
+  }
+
+  closePopup(){
+    this.isValid = true;
   }
   
 }

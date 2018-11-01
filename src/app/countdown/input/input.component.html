@@ -26,38 +26,33 @@
       <i class="material-icons">backspace</i>
     </button>
   </div>
-  <div class="msg-box" *ngIf="invalid">
-      <span class="u-alert">Invalid input!</span>
-  </div>
+  <app-popup (close)="closePopup()" [open]="!isValid" [content]="'Invalid input!'"></app-popup>
   <mat-divider class="divider"></mat-divider>
 
   <!-- ==================================================================== 
     =============================== KEYPAD ================================-->
-<div class="keypad-box" fxLayout.gt-xs="row">
-    <mat-grid-list 
-    cols="3" 
-    [rowHeight]="gridRowHeight" 
-    class="keypad"
-    fxFlex.gt-xs="50"
-    >
-    <mat-grid-tile *ngFor="let num of numbers">
-      <button (click)="onKeyPressed(num)" class="u-btn keypad__btn">{{num}}</button>
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="3">
-      <button (click)="onKeyPressed(0)" class="u-btn keypad__btn">0</button>
-    </mat-grid-tile>
-  </mat-grid-list>
+  <div class="keypad-box" fxLayout.gt-xs="row">
+      <mat-grid-list 
+      cols="3" 
+      [rowHeight]="gridRowHeight" 
+      class="keypad"
+      fxFlex.gt-xs="50"
+      >
+      <mat-grid-tile *ngFor="let num of numbers">
+        <button (click)="onKeyPressed(num)" class="u-btn keypad__btn">{{num}}</button>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="3">
+        <button (click)="onKeyPressed(0)" class="u-btn keypad__btn">0</button>
+      </mat-grid-tile>
+    </mat-grid-list>
 
 
-    <!-- ====================================================================== 
-    =============================== PLAY BTN ================================-->
-    <div class="btn-play" *ngIf="input.length > 0">
-      <button mat-fab color="primary" (click)="onPlayBtnClicked()">
-        <i class="material-icons">play_arrow</i>
-      </button>
+      <!-- ====================================================================== 
+      =============================== PLAY BTN ================================-->
+      <div class="btn-play" *ngIf="input.length > 0">
+        <button mat-fab color="primary" (click)="onPlayBtnClicked()">
+          <i class="material-icons">play_arrow</i>
+        </button>
+    </div>
   </div>
-</div>
-
-
-
 </section>

@@ -5,17 +5,23 @@
     [diameter]="250"
     [strokeWidth]="4"></mat-progress-spinner>
   <div class="display">
-    <div class="display__digits">
+    <div class="display__digits" *ngIf="progress<100; else message">
         <span>{{timeLeft.hours | formatDigit}}</span>
         <span>:</span>
         <span>{{timeLeft.minutes | formatDigit}}</span>
         <span>:</span>
         <span>{{timeLeft.seconds | formatDigit}}</span>
     </div>
+    <ng-template #message>
+      <div class="display__msg">On Air</div>
+    </ng-template>
   </div>
-  <div class="btn-pause">
+  <div class="btn-pause" >
       <button mat-fab color="primary" (click)="pauseCount()">
-        <i class="material-icons">pause</i>
+        <i class="material-icons" *ngIf="progress<100; else chevron">pause</i>
+        <ng-template #chevron>
+          <i class="material-icons">chevron_left</i>
+        </ng-template>
       </button>
   </div>
 </section>

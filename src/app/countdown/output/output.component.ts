@@ -77,7 +77,10 @@ export class OutputComponent implements OnInit, OnDestroy {
                                    // by the time duration specified, with a interval rate of 100ms 
     const interval = setInterval(()=>{
       this.progress = this.progress + increment;
-      if(this.progress>=100) clearInterval(interval); 
+      if(this.progress>=100) {
+        this.clockService.stop();
+        clearInterval(interval);
+      } 
     },100);
   }
 

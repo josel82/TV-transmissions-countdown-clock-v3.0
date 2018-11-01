@@ -50,6 +50,8 @@ export class ClockService {
       this.counter.next(this.formatTime(timeDiff));
 
     }, 1000);
+
+    
   }
   /**
    * Stops the countdown process

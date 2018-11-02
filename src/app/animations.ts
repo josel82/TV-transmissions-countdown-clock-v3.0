@@ -22,10 +22,10 @@ export const fadeInAnimation = trigger('fadeInOut', [
     ])
 ]);
 
-export const slideInOutAnimation = trigger('slideInOut', [
+export const slideInFromLeft = trigger('slideInLeft', [
    transition(':enter', [
-       query('.countdown-input, .countdown-output', [
-            style({ transform: 'translateX(100%)'}),
+       query('.countdown-input', [
+            style({ transform: 'translateX(-100%)'}),
             animate('300ms ease-in', style({ transform: 'translateX(0)' }))
        ])
        
@@ -36,3 +36,17 @@ export const slideInOutAnimation = trigger('slideInOut', [
        ])
    ])
 ])
+
+export const slideInFromRight = trigger('slideInRight', [
+    transition(':enter', [
+        query('.countdown-output', [
+             style({ transform: 'translateX(100%)'}),
+             animate('300ms ease-in', style({ transform: 'translateX(0)' }))
+        ])
+    ]),
+    transition(':leave', [
+        query('.countdown-input, .countdown-output', [
+             animate('300ms ease-in', style({ transform: 'translateX(100%)' }))
+        ])
+    ])
+ ])

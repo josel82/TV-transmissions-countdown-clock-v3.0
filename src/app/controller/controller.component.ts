@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 
-import { slideInOutAnimation } from '../animations';
+import { slideInFromLeft, slideInFromRight } from '../animations';
 
 @Component({
   selector: 'app-controller',
   templateUrl: './controller.component.html',
   styleUrls: ['./controller.component.scss'],
-  animations: [ slideInOutAnimation ]
+  animations: [ slideInFromLeft, slideInFromRight ]
     
 })
 export class ControllerComponent {

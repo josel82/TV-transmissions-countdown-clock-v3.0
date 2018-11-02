@@ -1,26 +1,31 @@
+//====================================== MODULES =========================================
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule } from '@angular/core';
 import { MaterialModule } from  './material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
+//===================================== COMPONENTS ========================================
 import { AppComponent } from './app.component';
-import { InputComponent } from './countdown/input/input.component';
-import { OutputComponent } from './countdown/output/output.component';
+import { InputComponent } from './controller/input/input.component';
+import { OutputComponent } from './controller/output/output.component';
+import { PopupComponent } from './popup/popup.component';
+//======================================= PIPES ===========================================
 import { FormatDigitPipe } from './pipes/format-digit.pipe';
 import { ComputeDigitPipe } from './pipes/compute-digit.pipe';
-import { CountdownComponent } from './countdown/countdown.component';
-import { PopupComponent } from './popup/popup.component';
+//====================================== SERVICES =========================================
+import { InputService } from './services/input.service';
+import { ControllerComponent } from './controller/controller.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     InputComponent,
     OutputComponent,
+    PopupComponent,
     FormatDigitPipe,
     ComputeDigitPipe,
-    CountdownComponent,
-    PopupComponent,
+    ControllerComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +33,7 @@ import { PopupComponent } from './popup/popup.component';
     MaterialModule,
     FlexLayoutModule
   ],
-  providers: [],
+  providers: [InputService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

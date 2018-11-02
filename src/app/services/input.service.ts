@@ -1,8 +1,9 @@
+
 export class InputService {
 
   /**
    * Public method for validating the time input
-   * @param input Array of numbers representing time input 
+   * @param targetTime Array of numbers representing time input 
    */
   validateInput(targetTime){
     return this.isInputValid(targetTime);

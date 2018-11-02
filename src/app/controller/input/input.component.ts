@@ -7,16 +7,18 @@ import {
  } from '@angular/core';
 
 import { InputService } from '../../services/input.service';
+import { fadeInAnimation } from '../../animations';
+
 
 @Component({
   selector: 'app-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
-  providers:[InputService]
+  animations: [fadeInAnimation]
 })
 export class InputComponent implements OnInit{
 
-  @Output() onCount = new EventEmitter<Object>();
+  @Output() onCount = new EventEmitter<{hours:number, minutes:number, seconds:number}>();
    
 
   numbers = [1,2,3,4,5,6,7,8,9];

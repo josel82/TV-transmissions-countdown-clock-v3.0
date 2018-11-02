@@ -3,8 +3,8 @@ import {
   EventEmitter, 
   Output, 
   Input, 
-  OnInit, 
-  OnDestroy 
+  OnInit,
+  OnDestroy
 } from '@angular/core';
 import * as moment from 'moment';
 
@@ -17,7 +17,7 @@ import { ClockService } from '../../services/clock.service';
   styleUrls: ['./output.component.scss'],
   providers: [ClockService]
 })
-export class OutputComponent implements OnInit, OnDestroy {
+export class OutputComponent implements OnInit, OnDestroy { 
 
   @Input() set setTargetTime(targetTime: {hours:number, minutes:number, seconds:number}){
     this.targetTime = targetTime;
@@ -30,12 +30,14 @@ export class OutputComponent implements OnInit, OnDestroy {
   counting:boolean = false;
   
   //ClockService injection
-  constructor(private clockService: ClockService) { }
+  constructor(
+    private clockService: ClockService, 
+    ) { }
 
   /**
    * OnInit LifeCycle Hook. Runs once when the component has been created.
    */
-  ngOnInit() {
+  ngOnInit() {    
     //Listen to the countdown and updates timeDiff property
     this.clockService.counter.subscribe( timeDiff => {
       this.timeLeft = timeDiff;
@@ -46,6 +48,7 @@ export class OutputComponent implements OnInit, OnDestroy {
       }
       
     });
+    
     //Starts the process of countingdown
     this.clockService.start(this.targetTime);
   }
@@ -57,6 +60,7 @@ export class OutputComponent implements OnInit, OnDestroy {
     //It stops the countdown 
     this.clockService.stop();
   }
+
 
   /**
    * Pause event handler. It triggers the proccess of 

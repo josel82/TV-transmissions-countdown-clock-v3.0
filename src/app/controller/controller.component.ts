@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
 
+import { slideInOutAnimation } from '../animations';
+
 @Component({
-  selector: 'app-countdown',
-  templateUrl: './countdown.component.html',
-  styleUrls: ['./countdown.component.scss']
+  selector: 'app-controller',
+  templateUrl: './controller.component.html',
+  styleUrls: ['./controller.component.scss'],
+  animations: [ slideInOutAnimation ]
+    
 })
-export class CountdownComponent {
+export class ControllerComponent {
   
   countingDown:boolean = false;
   targetTime: { hours:number, minutes:number, seconds:number }

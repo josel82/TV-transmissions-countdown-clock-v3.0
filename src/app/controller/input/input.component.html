@@ -26,7 +26,12 @@
       <i class="material-icons">backspace</i>
     </button>
   </div>
-  <app-popup (close)="closePopup()" [open]="!isValid" [content]="'Invalid input!'"></app-popup>
+  <app-popup 
+    (close)="closePopup()" 
+    [content]="'Invalid input!'"
+    @fadeInOut
+    *ngIf="!isValid"
+    ></app-popup>
   <mat-divider class="divider"></mat-divider>
 
   <!-- ==================================================================== 

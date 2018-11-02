@@ -26,10 +26,9 @@
 
     &__msg {
         text-transform: uppercase;
-        color: $color-accent;
+        color: #ccc;
         font-size: 3.5rem;
         font-weight: 300;
-        text-shadow: 0 1.5rem 4rem rgba(0,0,0, .2);
 
         @include respond(gt-sm){
             font-size: 4.5rem;

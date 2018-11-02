@@ -24,10 +24,15 @@ export const fadeInAnimation = trigger('fadeInOut', [
 
 export const slideInOutAnimation = trigger('slideInOut', [
    transition(':enter', [
-       style({ transform: 'translateX(-100%)'}),
-       animate('1s ease-in', style({ transform: 'translateX(0)' }))
+       query('.countdown-input, .countdown-output', [
+            style({ transform: 'translateX(100%)'}),
+            animate('300ms ease-in', style({ transform: 'translateX(0)' }))
+       ])
+       
    ]),
    transition(':leave', [
-    animate('1s ease-in', style({ transform: 'translateX(100%)' }))
+       query('.countdown-input, .countdown-output', [
+            animate('300ms ease-in', style({ transform: 'translateX(-100%)' }))
+       ])
    ])
 ])

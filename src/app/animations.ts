@@ -50,3 +50,7 @@ export const slideInFromRight = trigger('slideInRight', [
         ])
     ])
  ])
+
+ export const blockInitialRenderAnimation = trigger('blockInitialRenderAnimation', [
+    transition(':enter', [])
+ ]);

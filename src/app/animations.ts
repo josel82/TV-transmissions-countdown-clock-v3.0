@@ -1,16 +1,15 @@
 import {
     trigger,
-    state,
     style,
     animate,
     transition,
-    query,
-    animateChild,
-    group,
-    stagger
+    query
 } from '@angular/animations';
 
-
+/**
+ * Trigger for the fade-in/fade-out animation
+ * 
+ */
 export const fadeInAnimation = trigger('fadeInOut', [
 
     transition(':enter', [
@@ -21,10 +20,12 @@ export const fadeInAnimation = trigger('fadeInOut', [
         animate('200ms ease-in', style({opacity: 0}))
     ])
 ]);
-
+/**
+ * Trigger for slide-in/slide-out animation, coming from the left side of the screen
+ */
 export const slideInFromLeft = trigger('slideInLeft', [
    transition(':enter', [
-       query('.countdown-input', [
+       query('.countdown-input', [ //it targets the CountdownInput component
             style({ transform: 'translateX(-100%)'}),
             animate('300ms ease-in', style({ transform: 'translateX(0)' }))
        ])
@@ -37,9 +38,12 @@ export const slideInFromLeft = trigger('slideInLeft', [
    ])
 ])
 
+/**
+ * Trigger for slide-in/slide-out animation, coming from the right side of the screen
+ */
 export const slideInFromRight = trigger('slideInRight', [
     transition(':enter', [
-        query('.countdown-output', [
+        query('.countdown-output', [ //it targets the CountdownOutput component
              style({ transform: 'translateX(100%)'}),
              animate('300ms ease-in', style({ transform: 'translateX(0)' }))
         ])
@@ -51,6 +55,10 @@ export const slideInFromRight = trigger('slideInRight', [
     ])
  ])
 
+/**
+ * No-Op transition. It prevents Animations during
+ * the initial render of ngIf in the children components
+ */
  export const blockInitialRenderAnimation = trigger('blockInitialRenderAnimation', [
     transition(':enter', [])
  ]);

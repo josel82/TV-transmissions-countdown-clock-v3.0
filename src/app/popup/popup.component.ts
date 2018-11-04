@@ -7,9 +7,14 @@ import { Component, Input ,Output, EventEmitter } from '@angular/core';
 
 })
 export class PopupComponent {
-  @Output() close = new EventEmitter<void>();
+  //Close popup event emiter
+  @Output() close = new EventEmitter<void>(); 
+  //Popup content data binding
   @Input() content: string = '';
 
+  /**
+   * Close popup event handler
+   */
   onClose(){
     this.close.emit();
   }

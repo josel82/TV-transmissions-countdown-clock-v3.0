@@ -13,9 +13,9 @@ export class ClockService {
    * and returns it in milliseconds.
    * @param param0 time the countdown is done against. This is the time the user inputs.
    */
-  private calculateTimeDifference({hours: hour, minutes: minute, seconds: second}) {
+  private calculateTimeDifference({hours, minutes, seconds}) {
 
-    const target = moment({hour,minute,second});
+    const target = moment({hours,minutes,seconds});
     const now = moment();
 
     if(target.diff(now) < 0){ // Adds 1 day if target time is less than current time, 

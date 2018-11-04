@@ -18,11 +18,15 @@ import { ClockService } from '../../services/clock.service';
   providers: [ClockService]
 })
 export class OutputComponent implements OnInit, OnDestroy { 
-
-  @Input() set setTargetTime(targetTime: {hours:number, minutes:number, seconds:number}){
+  /**
+   * Sets the target time when the start count event 
+   * is emitted by the InputComponent is emitted
+   */
+  @Input() set target(targetTime: {hours:number, minutes:number, seconds:number}){
     this.targetTime = targetTime;
   }
-  @Output() onPause = new EventEmitter<void>();
+  //Pause count event emitter
+  @Output() onPause = new EventEmitter<void>(); 
 
   progress:number = 0; // used by the spinner component 
   targetTime: {hours:number, minutes:number, seconds:number} = {hours:0, minutes:0, seconds:0};
@@ -30,9 +34,7 @@ export class OutputComponent implements OnInit, OnDestroy {
   counting:boolean = false;
   
   //ClockService injection
-  constructor(
-    private clockService: ClockService, 
-    ) { }
+  constructor(private clockService: ClockService) {}
 
   /**
    * OnInit LifeCycle Hook. Runs once when the component has been created.

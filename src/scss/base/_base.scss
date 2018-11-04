@@ -17,6 +17,7 @@ body {
 
 //MEDIA QUERY MANAGER
 /*
+- gt-xs  > 560px    560px/16px =35em
 - gt-xs  > 600px    600px/16px = 37.5em
 - gt-sm  > 960px    960px/16px = 60em
 - gt-md  > 1280px   1280/16px = 80em
@@ -24,6 +25,10 @@ body {
 */
 
 @mixin respond($breakpoint){
+
+    @if($breakpoint == xs-sm){
+        @media (min-width: 35em) and (max-width:59.93em) { @content };
+    }
     @if($breakpoint == gt-xs){
         @media (min-width: 37.5em) { @content };
     }

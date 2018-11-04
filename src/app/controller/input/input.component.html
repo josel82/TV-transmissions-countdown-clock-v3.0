@@ -36,12 +36,11 @@
 
   <!-- ==================================================================== 
     =============================== KEYPAD ================================-->
-  <div class="keypad-box" fxLayout.gt-xs="row">
+  <div class="keypad-box">
       <mat-grid-list 
       cols="3" 
       [rowHeight]="gridRowHeight" 
       class="keypad"
-      fxFlex.gt-xs="50"
       >
       <mat-grid-tile *ngFor="let num of numbers">
         <button (click)="onKeyPressed(num)" class="u-btn keypad__btn">{{num}}</button>
